@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分享资源喵</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            animation: fadeInDown 1s ease;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            padding: 30px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .intro h2 {
+            color: #2575fc;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .download-section {
+            margin: 30px 0;
+        }
+        
+        .download-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .download-header i {
+            font-size: 2.5rem;
+            color: #6a11cb;
+            margin-right: 15px;
+        }
+        
+        .download-header h3 {
+            font-size: 1.8rem;
+            color: #333;
+        }
+        
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .download-card {
+            background: #f9f9ff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e6e6ff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(106, 17, 203, 0.15);
+            border-color: #c2c2ff;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .card-header i {
+            font-size: 1.8rem;
+            color: #2575fc;
+            margin-right: 12px;
+        }
+        
+        .card-header h4 {
+            font-size: 1.4rem;
+            color: #444;
+        }
+        
+        .card-content {
+            margin-bottom: 20px;
+        }
+        
+        .card-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .file-info {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(37, 117, 252, 0.4);
+            background: linear-gradient(to right, #5d0fc1, #1c68f0);
+        }
+        
+        .download-btn i {
+            margin-right: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+        }
+        
+        .instructions {
+            background: #f0f7ff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border-left: 4px solid #2575fc;
+        }
+        
+        .instructions h3 {
+            color: #2575fc;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .instructions li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .download-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-download"></i> 学习资源下载中心</h1>
+            <p>精选学习资料，助力你的学业成功</p>
+        </header>
+        
+        <div class="content">
+            <section class="intro">
+                <h2>欢迎访问喵喵下载站</h2>
+                <p>在这里…在这里可以捡到小鱼干一样的知识喵！(˃̵ᴗ˂̵)
+课件呀、参考书呀、魔法小纸条什么的都…都免费白嫖喵！。</p>
+            </section>
+            
+            <section class="download-section">
+                <div class="download-header">
+                    <i class="fas fa-file-archive"></i>
+                    <h3>资源下载</h3>
+                </div>
+                
+                <div class="download-cards">
+                    <div class="download-card">
+                        <div class="card-header">
+                            <i class="fas fa-book"></i>
+                            <h4>高等数学资料包</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>选中想要的宝藏喵~ 用冻僵的爪爪戳戳「下载按钮」喵！</p>
+                            <div class="file-info">
+                                <span>文件大小: 85MB</span>
+                                <span>格式: ZIP</span>
+                            </div>
+                        </div>
+                        <a href="math_resources.zip" class="download-btn">
+                            <i class="fas fa-download"></i> 下载资料
+                        </a>
+                    </div>
+                    
+                    <div class="download-card">
+                        <div class="card-header">
+                            <i class="fas fa-code"></i>
+                            <h4>Python编程入门</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Python基础教程、代码示例和实践项目，适合编程初学者。</p>
+                            <div class="file-info">
+                                <span>文件大小: 45MB</span>
+                                <span>格式: PDF</span>
+                            </div>
+                        </div>
+                        <a href="python_tutorial.pdf" class="download-btn">
+                            <i class="fas fa-download"></i> 下载资料
+                        </a>
+                    </div>
+                    
+                    <div class="download-card">
+                        <div class="card-header">
+                            <i class="fas fa-globe-asia"></i>
+                            <h4>英语四级备考资料</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>最新英语四级考试真题、词汇表和备考指南，包含听力材料。</p>
+                            <div class="file-info">
+                                <span>文件大小: 120MB</span>
+                                <span>格式: RAR</span>
+                            </div>
+                        </div>
+                        <a href="cet4_materials.rar" class="download-btn">
+                            <i class="fas fa-download"></i> 下载资料
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> 使用说明</h3>
+                <ol>
+                    <li><strong>选择资源</strong> - 点击你想要下载的资源卡片</li>
+                    <li><strong>下载文件</strong> - 点击下载按钮获取文件</li>
+                    <li><strong>解压文件</strong> - 使用WinRAR或7-Zip解压下载的压缩包</li>
+                    <li><strong>开始学习</strong> - 使用PDF阅读器或相关软件打开学习资料</li>
+                </ol>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 学习资源分享中心 | 学生党专属学习资料库</p>
+        </footer>
+    </div>
+
+    <script>
+        // 简单的动画效果增强
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.download-card');
+            
+            cards.forEach((card, index) => {
+                // 添加延迟动画
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                // 添加点击效果
+                card.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('download-btn')) {
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // 添加下载按钮动画
+            const buttons = document.querySelectorAll('.download-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 下载中...';
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-check"></i> 下载完成';
+                        this.style.background = 'linear-gradient(to right, #2ecc71, #27ae60)';
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
